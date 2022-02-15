@@ -1,19 +1,24 @@
-#BINARY SEARCH
-#Iterative Approach
-arr= [2,3,4,6,8,9,10,15,19,23,27,29,55,57,59,70,91]
-print(arr)
-s=int(input("Enter the element to search for: "))
-l=0
-r=len(arr)-1
-mid=0
-while l<=r:
-    mid=(r+l)//2
-    if arr[mid]<s:
-        l=mid+1
-    elif arr[mid]>s:
-        r=mid-1
-    elif arr[mid]==s:
-        print(' Element found at:', mid+1)
-        break
+#Iterative Method
+def Bsearch(arr,s,left,right):
+    while left<=right:
+        mid=(left+right)//2
+        if arr[mid]==s:
+            return mid+1
+        elif arr[mid]<s:
+            left=mid+1
+        else:
+            right=mid-1
+    return -1
+
+#Driver Code
+if __name__ == '__main__':
+#using already sorted array for Binary search
+    arr=[2,5,7,8,9,10,12,15,17,19,23,45,56,58,67,69,70,73,76,78,79,89,98,99,102,134,156,202,214,267]
+    s=7
+    left=0
+    right=len(arr)-1
+    res=(Bsearch(arr,s,left,right))
+    if res!=-1:
+        print("Element is present at: ",res)
     else:
-        print("Element not found!")
+        print("Element not found")
